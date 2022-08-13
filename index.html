@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>!oo,Awsome Design</title>
+
+
+    <script src="js/StarryNight.js"></script>
+    <style>
+        body{
+            background: black;
+        }
+        canvas {
+            background: white;
+            text-align: center;
+            height: 80vh;
+            width: 80vh;
+            margin: 10px;
+        }
+    </style>
+    <script>
+        const CANVAS_SIZE=1000;
+        const projectCount = 99;
+        function main(){
+            initializeCanvases();
+            new StarryNight(document.getElementById("canvas_1"));
+        }
+
+        function initializeCanvases(){
+            for(let i = 1; i<=projectCount; i++){
+                const canvas = document.createElement('canvas');
+                canvas.id = 'canvas_'+i;
+                canvas.width = CANVAS_SIZE;
+                canvas.height = CANVAS_SIZE;
+                canvas.style.border ='1px solid orange';
+
+                let body = document.getElementsByTagName('body')[0];
+                body.appendChild(canvas);
+            }
+        }
+    </script>
+</head>
+<body onload="main()">
+    
+</body>
+</html>
