@@ -1,4 +1,4 @@
-class StarryNight{
+class Constelations{
     // This is our super constructor.We call our every method in this constructor
     constructor(canvas){
         this.canvas=canvas;
@@ -6,6 +6,15 @@ class StarryNight{
 
         this.drawDarkBackground();
         this.stars = this.getRandomStars(150);
+        this.stars.push(new Star([100,500],true));
+        this.stars.push(new Star([200,510],true));
+        this.stars.push(new Star([300,550],true));
+        this.stars.push(new Star([400,600],true));
+        this.stars.push(new Star([420,680],true));
+        this.stars.push(new Star([510,690],true));
+        this.stars.push(new Star([550,600],true));
+
+
         for(let i=0; i<this.stars.length;i++){
             this.stars[i].draw(this.ctx);
         }
@@ -22,7 +31,16 @@ class StarryNight{
         for(let i=0; i<this.stars.length;i++){
             this.stars[i].update();
             this.stars[i].draw(this.ctx);
-    }
+        }
+        for(let i=this.stars.length-6;i<this.stars.length; i++){
+            const prevStar= this.stars[i-1];
+            const star= this.stars[i];
+            this.ctx.beginPath();
+            this.ctx.strokeStyle='blue';
+            this.ctx.moveTo(...prevStar.location);
+            this.ctx.lineTo(...star.location);
+            this.ctx.stroke();
+        }
     }
 
     // This method is used for creating many star
@@ -49,34 +67,4 @@ class StarryNight{
     }
 }
 
-class Star{
-    constructor(location,isLarger){
-        this.location = location;
-        this.radius = Math.random() *2 +2;
-        this.isLarger = isLarger;
-        if(this.isLarger==true){
-            this.radius+=2;
-        }
-    }
-
-    // This method is used for styling and creating a single star
-    draw(ctx){
-        ctx.beginPath();
-        ctx.lineWidth=5;
-        ctx.fillStyle="white";
-        ctx.shadowColor = "white";
-        ctx.shadowBlur = 5;
-        ctx.shadowOffsetX = 50;
-        ctx.shadowOffsetY = 50;
-        ctx.arc(this.location[0],this.location[1],this.radius,0,Math.PI*2);
-        ctx.fill(); 
-    }
-
-    update(){
-        this.radius = Math.random()* 2 +2;
-        if(this.isLarger==true){
-            this.radius+=2;
-        }
-    }
-}
-
+// lenght is 1.3min
