@@ -7,11 +7,14 @@
     <title>!oo,Awsome Design</title>
 
 
+    <script src="js/Project.js"></script>
     <script src="js/StarryNight.js"></script>
     <script src="js/Constelation.js"></script>
     <style>
         body{
             background: black;
+            margin: 0;
+            padding: 0;
         }
         canvas {
             background: white;
@@ -24,10 +27,20 @@
     <script>
         const CANVAS_SIZE=1000;
         const projectCount = 99;
+        const projects=[
+            null,
+            StarryNight,
+            Constelations
+        ];
+
+
         function main(){
             initializeCanvases();
-            new StarryNight(document.getElementById("canvas_1"));
-            new Constelations(document.getElementById("canvas_2"));
+
+            for(let i =1; i<projects.length;i++){
+                new projects[i](document.getElementById('canvas_'+i))
+                
+            }
         }
 
         function initializeCanvases(){

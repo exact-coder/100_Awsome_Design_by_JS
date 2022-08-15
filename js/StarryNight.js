@@ -1,24 +1,16 @@
-class StarryNight{
+class StarryNight extends Project{
     // This is our super constructor.We call our every method in this constructor
     constructor(canvas){
-        this.canvas=canvas;
-        this.ctx = canvas.getContext("2d");
 
-        this.drawDarkBackground();
-        this.stars = this.getRandomStars(150);
-        for(let i=0; i<this.stars.length;i++){
-            this.stars[i].draw(this.ctx);
-        }
-
-        
-        setInterval(()=>{
-            this.drawFrame()
-        },1000/30);
+        super(canvas)
+        this.stars = this.getRandomStars(200);
+        this.drawFrame();
+        this.showDisabled();
     }
 
     //This drawFrame method is used setInterval function for blinking all the stars 
     drawFrame(){
-        this.drawDarkBackground();
+        drawDarkBackground(this.ctx);
         for(let i=0; i<this.stars.length;i++){
             this.stars[i].update();
             this.stars[i].draw(this.ctx);
@@ -65,9 +57,9 @@ class Star{
         ctx.lineWidth=5;
         ctx.fillStyle="white";
         ctx.shadowColor = "white";
-        ctx.shadowBlur = 5;
-        ctx.shadowOffsetX = 50;
-        ctx.shadowOffsetY = 50;
+        // ctx.shadowBlur = 5;
+        // ctx.shadowOffsetX = 50;
+        // ctx.shadowOffsetY = 50;
         ctx.arc(this.location[0],this.location[1],this.radius,0,Math.PI*2);
         ctx.fill(); 
     }

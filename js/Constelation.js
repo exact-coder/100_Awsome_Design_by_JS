@@ -1,11 +1,8 @@
-class Constelations{
+class Constelations extends Project{
     // This is our super constructor.We call our every method in this constructor
     constructor(canvas){
-        this.canvas=canvas;
-        this.ctx = canvas.getContext("2d");
-
-        this.drawDarkBackground();
-        this.stars = this.getRandomStars(150);
+        super(canvas)
+        this.stars = this.getRandomStars(200);
         this.stars.push(new Star([100,500],true));
         this.stars.push(new Star([200,510],true));
         this.stars.push(new Star([300,550],true));
@@ -14,20 +11,14 @@ class Constelations{
         this.stars.push(new Star([510,690],true));
         this.stars.push(new Star([550,600],true));
 
+        this.drawFrame();
+        this.showDisabled();
 
-        for(let i=0; i<this.stars.length;i++){
-            this.stars[i].draw(this.ctx);
-        }
-
-        
-        setInterval(()=>{
-            this.drawFrame()
-        },1000/30);
     }
 
     //This drawFrame method is used setInterval function for blinking all the stars 
     drawFrame(){
-        this.drawDarkBackground();
+        drawDarkBackground(this.ctx);
         for(let i=0; i<this.stars.length;i++){
             this.stars[i].update();
             this.stars[i].draw(this.ctx);
@@ -58,13 +49,6 @@ class Constelations{
     }
 
 
-    // This method is used for creating a dark background for the whole canvas
-    drawDarkBackground(){
-        this.ctx.beginPath();
-        this.ctx.lineWidth=5;
-        this.ctx.fillStyle="black";
-        this.ctx.fillRect(0,0,this.canvas.width,this.canvas.height);
-    }
 }
 
-// lenght is 1.3min
+
