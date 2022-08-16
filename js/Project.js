@@ -34,10 +34,22 @@ class Project{
 
             me.showDisabled();
         },false);
+
+        this.canvas.addEventListener('click', function(event){
+            const location = getMousePos(me.canvas,event);
+            console.log(location);
+        },false);
     }
 
-    
 
+}
+
+function getMousePos(canvas,evt){
+    let rect = canvas.getBoundingClientRect();
+    return [
+        evt.clientX - rect.left,
+        evt.clientY - rect.top,
+    ];
 }
 
 // This Utlitis function is used for creating a dark background for the whole canvas
