@@ -7,6 +7,7 @@ class Project{
         this.addEventListeners();
     }
 
+    // Used for hovering every single project
     showDisabled(){
         this.ctx.fillStyle = "rgba(150,150,150,0.5)";
         this.ctx.fillRect(0,0,this.canvas.width,this.canvas.height);
@@ -47,8 +48,8 @@ class Project{
 function getMousePos(canvas,evt){
     let rect = canvas.getBoundingClientRect();
     return [
-        evt.clientX - rect.left,
-        evt.clientY - rect.top,
+        Math.round(CANVAS_SIZE *(evt.clientX - rect.left)/(rect.right-rect.left)),
+        Math.round(CANVAS_SIZE *(evt.clientY - rect.top)/(rect.bottom-rect.top)),
     ];
 }
 
@@ -60,4 +61,5 @@ function drawDarkBackground(ctx){
     ctx.fillRect(0,0,CANVAS_SIZE,CANVAS_SIZE);
 }
 
-//length is 1.40min 
+
+
