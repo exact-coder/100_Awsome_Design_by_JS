@@ -87,3 +87,4 @@ class ShootingStar{
     }
 }
 
+// length is 2.8min
