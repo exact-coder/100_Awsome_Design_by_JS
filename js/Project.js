@@ -20,6 +20,8 @@ class Project{
 
     addEventListeners(){
         let me =this;
+
+        // For blinking all the stars
         this.canvas.addEventListener('mouseover', function(event){
             if(me.interval == null){
                 me.drawFrame();
@@ -29,6 +31,7 @@ class Project{
             }
         },false);
 
+        // Stop hovering Effect
         this.canvas.addEventListener('mouseout', function(event){
             clearInterval(me.interval);
             me.interval =null;

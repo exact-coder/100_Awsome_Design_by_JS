@@ -1,9 +1,9 @@
-class Snowfall extends Project{
+class Rain extends Project{
     // This is our super constructor.We call our every method in this constructor
     constructor(canvas){
 
         super(canvas)
-        this.snow = this.generateSnowParticles(200);
+        this.raindrops = this.generateRainDrops(200);
         this.drawFrame();
         this.showDisabled();
     }
@@ -11,18 +11,18 @@ class Snowfall extends Project{
     //This drawFrame method is used setInterval function for blinking all the stars 
     drawFrame(){
         drawDarkBackground(this.ctx);
-        for(let i=0; i<this.snow.length;i++){
-            this.snow[i].update();
-            this.snow[i].draw(this.ctx);
+        for(let i=0; i<this.raindrops.length;i++){
+            this.raindrops[i].update();
+            this.raindrops[i].draw(this.ctx);
     }
     }
 
     // This method is used for creating many star
-    generateSnowParticles(N){
+    generateRainDrops(N){
         let arr =[];
         for(let i = 0; i<N;i++){
             arr.push(
-                new SnowFlake(
+                new RainDrop(
                     [Math.random()*CANVAS_SIZE,
                     Math.random()*CANVAS_SIZE]
                 )
@@ -33,38 +33,34 @@ class Snowfall extends Project{
 
 }
 
-class SnowFlake{
+class RainDrop{
     constructor(location){
         this.location = location;
-        this.radius = Math.random() *2 +2;
-        this.spreed = Math.random() *5 +8;
+        this.oldLocation =location;
+        this.radius = Math.random()+1;
+        this.spreed = Math.random() *50 + 50;
     }
 
     // This method is used for styling and creating a single star
     draw(ctx){
         ctx.beginPath();
-        ctx.lineWidth=5;
-        ctx.fillStyle="white";
-        ctx.arc(this.location[0],this.location[1],this.radius,0,Math.PI*2);
-        ctx.fill(); 
+        ctx.lineWidth=this.radius;
+        ctx.strokeStyle="rgba(255,255,255,0.3)";
+        ctx.moveTo(...this.oldLocation);
+        ctx.lineTo(...this.location);
+        ctx.stroke(); 
     }
 
     update(){
+        this.oldLocation=[
+            this.location[0],
+            this.location[1]
+        ];
         this.location[1] +=this.spreed;
-        this.location[0] += Math.random()* 5;
-        if(this.radius > 3){
-            this.location[0] +=Math.random() *5;
-        }else{
-            this.location[0] -=Math.random() *5;
-        }
+        
         if(this.location[1] > CANVAS_SIZE){
-            this.location[1] = 0;
-        }
-        if(this.location[0] > CANVAS_SIZE){
-            this.location[0] = 0;
-        }
-        if(this.location[0] < 0){
-            this.location[0] = CANVAS_SIZE;
+            this.location[1] -= CANVAS_SIZE;
+            this.oldLocation[1] -= CANVAS_SIZE;
         }
     }
 }

@@ -40,14 +40,6 @@ class SootingStars extends Project{
         return arr;
     }
 
-
-    // This method is used for creating a dark background for the whole canvas
-    drawDarkBackground(){
-        this.ctx.beginPath();
-        this.ctx.lineWidth=5;
-        this.ctx.fillStyle="black";
-        this.ctx.fillRect(0,0,this.canvas.width,this.canvas.height);
-    }
 }
 
 class ShootingStar{
@@ -87,4 +79,3 @@ class ShootingStar{
     }
 }
 
-// length is 2.8min
