@@ -4,11 +4,12 @@ class Fire extends Project{
 
         super(canvas)
         this.fire = [];
+        console.log(this.fire);
         this.drawFrame();
         this.showDisabled();
     }
 
-    //This drawFrame method is used setInterval function for blinking all the stars 
+    //This drawFrame method is used setInterval function for blinking the flame of fire
     drawFrame(){
         
         this.fire.push(new Flame([0.5*CANVAS_SIZE, 0.5 * CANVAS_SIZE]));

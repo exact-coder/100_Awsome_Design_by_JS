@@ -64,5 +64,12 @@ function drawDarkBackground(ctx){
     ctx.fillRect(0,0,CANVAS_SIZE,CANVAS_SIZE);
 }
 
+function drawColoredBackground(ctx,color){
+    ctx.beginPath();
+    ctx.lineWidth=5;
+    ctx.fillStyle=color;
+    ctx.fillRect(0,0,CANVAS_SIZE,CANVAS_SIZE);
+}
+
 
 
