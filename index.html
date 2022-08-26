@@ -1,11 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>!oo,Awsome Design</title>
-
 
     <script src="js/Project.js"></script>
     <script src="js/StarryNight.js"></script>
@@ -16,60 +15,58 @@
     <script src="js/RetroTV.js"></script>
     <script src="js/Fire.js"></script>
     <script src="js/Cloud.js"></script>
+    <script src="js/Moon.js"></script>
     <style>
-        body{
-            background: black;
-            margin: 0;
-            padding: 0;
-        }
-        canvas {
-            background: white;
-            text-align: center;
-            height: 80vh;
-            width: 80vh;
-            margin: 10px;
-        }
+      body {
+        background: black;
+        margin: 0;
+        padding: 0;
+      }
+      canvas {
+        background: white;
+        text-align: center;
+        height: 80vh;
+        width: 80vh;
+        margin: 10px;
+      }
     </style>
     <script>
-        const CANVAS_SIZE=1000;
-        const projectCount = 99;
-        const projects=[
-            null,
-            Cloud,
-            Fire,
-            Rain,
-            RetroTV,
-            Snowfall,
-            SootingStars,
-            Constelations,
-            StarryNight,
-        ];
+      const CANVAS_SIZE = 1000;
+      const projectCount = 99;
+      const projects = [
+        null,
+        Moon,
+        Cloud,
+        Fire,
+        Rain,
+        RetroTV,
+        Snowfall,
+        SootingStars,
+        Constelations,
+        StarryNight,
+      ];
 
+      function main() {
+        initializeCanvases();
 
-        function main(){
-            initializeCanvases();
-
-            for(let i =1; i<projects.length;i++){
-                new projects[i](document.getElementById('canvas_'+i))
-                
-            }
+        for (let i = 1; i < projects.length; i++) {
+          new projects[i](document.getElementById("canvas_" + i));
         }
+      }
 
-        function initializeCanvases(){
-            for(let i = 1; i<=projectCount; i++){
-                const canvas = document.createElement('canvas');
-                canvas.id = 'canvas_'+i;
-                canvas.width = CANVAS_SIZE;
-                canvas.height = CANVAS_SIZE;
-                canvas.style.border ='1px solid orange';
+      function initializeCanvases() {
+        for (let i = 1; i <= projectCount; i++) {
+          const canvas = document.createElement("canvas");
+          canvas.id = "canvas_" + i;
+          canvas.width = CANVAS_SIZE;
+          canvas.height = CANVAS_SIZE;
+          canvas.style.border = "1px solid orange";
 
-                let body = document.getElementsByTagName('body')[0];
-                body.appendChild(canvas);
-            }
+          let body = document.getElementsByTagName("body")[0];
+          body.appendChild(canvas);
         }
+      }
     </script>
-</head>
-<body onload="main()">
-    
-</body>
+  </head>
+  <body onload="main()"></body>
 </html>
