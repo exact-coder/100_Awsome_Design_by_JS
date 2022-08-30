@@ -9,7 +9,6 @@ class Rainbow extends Project{
         this.shape.push([CANVAS_SIZE*1.1,CANVAS_SIZE*0.5]);
         this.drawFrame();
         this.showDisabled();
-        // this.getColor();
     }
 
     //This drawFrame method is used setInterval function for blinking the flame of cloud
@@ -20,7 +19,6 @@ class Rainbow extends Project{
 
     getColor(index){
         switch (index) {
-            case 0:"red";break;
             case 1:"blue";break;
             case 2:"orange";break;
             case 4:"yellow";break;
@@ -37,8 +35,6 @@ class Rainbow extends Project{
             this.ctx.beginPath();
             this.ctx.moveTo(shape[0][0],shape[0][1]-dif*0.5);
             this.ctx.strokeStyle=this.getColor(i);
-            console.log(this.getColor(i));
-            console.log(i);
             this.ctx.lineWidth=dif;
             this.ctx.quadraticCurveTo(
                 shape[1][0],shape[1][1]-dif*0.5,
@@ -50,4 +46,4 @@ class Rainbow extends Project{
 
 
 
-// length is 3.12min
+// length is 3.48min

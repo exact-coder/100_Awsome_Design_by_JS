@@ -37,6 +37,3 @@ class Aurora extends Project{
     }
 }
 
-
-
-// length is 3.12min
